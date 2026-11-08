@@ -31,4 +31,9 @@ def analyze_titanic(data: TitanicInput) -> TitanicSummary:
     )
 
 result = analyze_titanic(TitanicInput(csv_path='titanic.csv'))
-print(result)
+print(f"Количество строк          : {result.row_count}")
+print(f"Пропуски по столбцам      : {result.missing_by_column}")
+print(f"Пассажиров старше 30 лет  : {result.adults_over_30_count}")
+print(f"Средний возраст по классам: {result.mean_age_by_pclass}")
+print(f"Доля выживших по классам  : {result.survival_rate_by_pclass}")
+print(f"Топ-5 тарифов (Fare)      : {result.highest_fares}")

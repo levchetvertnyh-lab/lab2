@@ -21,14 +21,14 @@ def analyze_titanic(data: TitanicInput) -> TitanicSummary:
     survival_rate_by_pclass_n = text.groupby('Pclass')['Survived'].count() / row_count
     survival_rate_by_pclass = {int(k): float(v) for k, v in survival_rate_by_pclass_n.to_dict().items()}
     highest_fares = text['Fare'].nlargest(5).tolist()
-    return(
-        row_count,
-        missing_by_column,
-        adults_over_30_count,
-        mean_age_by_pclass,
-        survival_rate_by_pclass,
-        highest_fares
-    )
+    return TitanicSummary(
+    row_count=row_count,
+    missing_by_column=missing_by_column,
+    adults_over_30_count=adults_over_30_count,
+    mean_age_by_pclass=mean_age_by_pclass,
+    survival_rate_by_pclass=survival_rate_by_pclass,
+    highest_fares=highest_fares,
+)
 
 result = analyze_titanic(TitanicInput(csv_path='titanic.csv'))
 print(f"Количество строк          : {result.row_count}")
